@@ -2,20 +2,22 @@ package dataframe_project;
 
 import java.util.ArrayList;
 
-public class Dataframe {	
-	private ArrayList<String> 	labels; 	//titres des colonnes
-	private ArrayList<Object> contenus; 	//contenus des colonnes
+public class Dataframe {
+	private ArrayList<Colonne> contenus;
 	
-	
+	public Dataframe() {
+		this.contenus = new ArrayList<Colonne>();
+	}
 	//constructeur parametre simple
-	public Dataframe(Object...contenu) {
-		//creation des arraylist
-		this.contenus = new ArrayList<Object>();
-		this.labels = new ArrayList<String>();
-		//remplissage
-		for(Object o : contenu) {
-			this.contenus.add(o);
-			this.labels.add(o.getClass().getName()); //label de la colonne définis par le nom de classe
+	//each Object in contenu must be an array like int[], float[],etc..
+	public Dataframe(ArrayList<Colonne> dataframe) {
+		this.contenus = dataframe;
+	}
+	
+	public Dataframe(Colonne...dataframe) {
+		this.contenus = new ArrayList<Colonne>();
+		for(Colonne c : dataframe) {
+			this.contenus.add(c);
 		}
 	}
 	
@@ -23,4 +25,17 @@ public class Dataframe {
 	public int getSize() {
 		return this.contenus.size();
 	}
+	
+	public void addColonne(Colonne colonne) {
+		this.contenus.add(colonne);
+	}
+	
+	public String toString() {
+		String res = "[";
+		for (Colonne c : contenus) {
+			res+=c.toString();
+		}
+		return res+"]";
+	}
+	
 }
