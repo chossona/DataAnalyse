@@ -1,5 +1,10 @@
 package dataframe_project;
 
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Dataframe {
@@ -20,6 +25,66 @@ public class Dataframe {
 			this.contenus.add(c);
 		}
 	}
+	//constructeur depuis fichier csv avec separateur etablis à "," 
+	public Dataframe(String filepath) {
+		this.contenus = new ArrayList<Colonne>();
+		String[] tableau_mot;
+		String ligne ="";
+		BufferedReader br;
+		try {
+			br = new BufferedReader(new FileReader(filepath));
+			Boolean creerDataframe = true;
+			while ((ligne = br.readLine()) != null){
+				tableau_mot = ligne.split(","); //chaque champs est séparé par une virgule
+				if(creerDataframe) {
+					//si permiere ligne on met en place le dataframe (on creer chaque colonne
+					for(int i = 0; i< tableau_mot.length; i++) {
+						this.contenus.add(new Colonne<String>());
+					}
+					creerDataframe = false;
+				}
+				
+				for(int i = 0; i< tableau_mot.length; i++) {
+					this.contenus.get(i).add(tableau_mot[i]);
+				}	
+			} 
+		} catch (FileNotFoundException e) {
+			System.out.println("Fichier inexistant");
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} 
+	}
+	//constructeur depuis fichier csv avec separateur etablis à "," 
+		public Dataframe(String filepath, String separateur) {
+			this.contenus = new ArrayList<Colonne>();
+			String[] tableau_mot;
+			String ligne ="";
+			BufferedReader br;
+			try {
+				br = new BufferedReader(new FileReader(filepath));
+				Boolean creerDataframe = true;
+				while ((ligne = br.readLine()) != null){
+					tableau_mot = ligne.split(separateur); //chaque champs est séparé par une virgule
+					if(creerDataframe) {
+						//si permiere ligne on met en place le dataframe (on creer chaque colonne
+						for(int i = 0; i< tableau_mot.length; i++) {
+							this.contenus.add(new Colonne<String>());
+						}
+						creerDataframe = false;
+					}
+					
+					for(int i = 0; i< tableau_mot.length; i++) {
+						this.contenus.get(i).add(tableau_mot[i]);
+					}	
+				} 
+			} catch (FileNotFoundException e) {
+				System.out.println("Fichier inexistant");
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} 
+		}
 	
 	//return nombre de colonne
 	public int getSize() {
