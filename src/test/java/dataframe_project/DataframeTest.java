@@ -56,5 +56,6 @@ public class DataframeTest {
 		Dataframe d = new Dataframe(c1,c2,c3);
 		assertEquals("[[1,2,3,][1,5,6,7,8,][papa,a,tromper,maman,]]", d.toString());
 	}
+	
 
 }

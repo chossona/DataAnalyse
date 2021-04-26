@@ -30,6 +30,9 @@ public class Dataframe {
 		this.contenus.add(colonne);
 	}
 	
+	
+	//Methode d'affichage//////////////////////////////////////
+	
 	public String toString() {
 		String res = "[";
 		for (Colonne c : contenus) {
@@ -38,4 +41,22 @@ public class Dataframe {
 		return res+"]";
 	}
 	
+	//methode d'affichage total
+	public void Afficher() {
+		System.out.println(this.toString());
+	}
+	
+	
+	//methode d'affichage premiere ligne
+	public void AfficherPremieresLignes(int nombre_de_ligne) {
+		for(Colonne c : this.contenus) {
+			System.out.println(c.AffichagePremiereLigne(nombre_de_ligne)+"\n");
+		}
+	}
+	//methode d'affichage derniere ligne
+		public void AfficherDernieresLignes(int nombre_de_ligne) {
+			for(Colonne c : this.contenus) {
+				System.out.println(c.AffichageDerniereLigne(nombre_de_ligne)+"\n");
+			}
+		}
 }

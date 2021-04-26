@@ -40,6 +40,22 @@ public class Colonne<E> {
 		return res+"]";
 	}
 	
+	public String AffichagePremiereLigne(int nombre_de_ligne) {
+		String res = "[label: "+this.label+"data: [";
+	    for(int i=0; (i<nombre_de_ligne) && (i<this.size()); i++) {
+	    	res+= this.contenu.get(i).toString()+",";
+	    }
+	    return res+"]]";
+	}
+	
+	public String AffichageDerniereLigne(int nombre_de_ligne) {
+		String res = "[label: "+this.label+"data: [";
+	    for(int i= Math.max(0, this.size()-nombre_de_ligne); i<this.size(); i++) {
+	    	res+= this.contenu.get(i).toString()+",";
+	    }
+	    return res+"]]";
+	}
+	
 	public int size() {
 		return this.contenu.size();
 	}
