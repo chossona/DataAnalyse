@@ -14,6 +14,25 @@ public class DataframeTest {
 		Dataframe d = new Dataframe(c1);
 		assertEquals(d.getSize(), 1);//test controlleur1
 	}
+	
+	@Test 
+	public void t_dataframe_vide() {
+		Dataframe d = new Dataframe();
+		d.Afficher();
+	}
+	
+	@Test 
+	public void t_dataframe_vide_lastligne() {
+		Dataframe d = new Dataframe();
+		d.AfficherDernieresLignes(5);
+	}
+	
+	@Test 
+	public void t_dataframe_vide_firstline() {
+		Dataframe d = new Dataframe();
+		d.AfficherPremieresLignes(5);
+	}
+	
 	@Test 
 	public void t_ConstrSimple_2() {
 		Colonne c1 = new Colonne<Integer>(1,2,3);
@@ -57,5 +76,25 @@ public class DataframeTest {
 		assertEquals("[[1,2,3,][1,5,6,7,8,][papa,a,tromper,maman,]]", d.toString());
 	}
 	
+	@Test
+	public void lecture_csv(){
+		Dataframe d = new Dataframe("exemple_csv.csv");
+		assertEquals("[[12,13,45,46,][benoît,Paul,Pierre,Jacques,]]", d.toString());
+	}
 
+	@Test 
+	public void t_lecture_csv_vide() {
+		Dataframe d = new Dataframe("exemple_vide.csv");
+		assertEquals("[]", d.toString());
+	}
+	
+	@Test 
+	public void t_lecture_csv_inexistant() {
+		try {
+			Dataframe d = new Dataframe("introuvable.csv");
+		}catch (Exception e) {
+			fail("erreur a l'ouverture");
+		}
+		
+	}
 }
