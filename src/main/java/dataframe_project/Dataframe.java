@@ -13,18 +13,20 @@ public class Dataframe {
 	public Dataframe() {
 		this.contenus = new ArrayList<Colonne>();
 	}
+	
 	//constructeur parametre simple
-	//each Object in contenu must be an array like int[], float[],etc..
 	public Dataframe(ArrayList<Colonne> dataframe) {
 		this.contenus = dataframe;
 	}
 	
+	//constructeur prenant plusieurs colonne en parametre
 	public Dataframe(Colonne...dataframe) {
 		this.contenus = new ArrayList<Colonne>();
 		for(Colonne c : dataframe) {
 			this.contenus.add(c);
 		}
 	}
+	
 	//constructeur depuis fichier csv avec separateur etablis à "," 
 	public Dataframe(String filepath) {
 		this.contenus = new ArrayList<Colonne>();
@@ -50,13 +52,15 @@ public class Dataframe {
 			} 
 		} catch (FileNotFoundException e) {
 			System.out.println("Fichier inexistant");
-			e.printStackTrace();
+			this.contenus = new ArrayList<Colonne>();
 		} catch (IOException e) {
 			e.printStackTrace();
+			this.contenus = new ArrayList<Colonne>();
 		} 
 	}
+	
 	//constructeur depuis fichier csv avec separateur etablis à "," 
-		public Dataframe(String filepath, String separateur) {
+	public Dataframe(String filepath, String separateur) {
 			this.contenus = new ArrayList<Colonne>();
 			String[] tableau_mot;
 			String ligne ="";
@@ -91,12 +95,10 @@ public class Dataframe {
 		return this.contenus.size();
 	}
 	
+	//ajouter une colonne
 	public void addColonne(Colonne colonne) {
 		this.contenus.add(colonne);
 	}
-	
-	
-	//Methode d'affichage//////////////////////////////////////
 	
 	public String toString() {
 		String res = "[";
@@ -111,13 +113,13 @@ public class Dataframe {
 		System.out.println(this.toString());
 	}
 	
-	
 	//methode d'affichage premiere ligne
 	public void AfficherPremieresLignes(int nombre_de_ligne) {
 		for(Colonne c : this.contenus) {
 			System.out.println(c.AffichagePremiereLigne(nombre_de_ligne)+"\n");
 		}
 	}
+	
 	//methode d'affichage derniere ligne
 		public void AfficherDernieresLignes(int nombre_de_ligne) {
 			for(Colonne c : this.contenus) {
