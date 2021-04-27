@@ -34,4 +34,22 @@ public class ColonneTest {
 		assertEquals(res, "[label: data: [papa,a,tromper,maman,]]");		
 	}
 	
+	
+	@Test
+	public void t_max_str() {
+		Colonne<String> c2  = new Colonne<String>("papa","a","tromper","maman");
+		assertEquals("tromper", c2.max());
+		assertNotEquals("papa", c2.max());
+		
+	}
+	
+	@Test
+	public void t_max_intr() {
+		Colonne<Integer> c2  = new Colonne<Integer>(1,2,3,4,5,1);
+		assertEquals(c2.max().toString(),"5");
+		assertNotEquals(c2.max().toString(),"1");
+		
+	}
+	
+	
 }

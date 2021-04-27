@@ -10,16 +10,25 @@ import java.util.ArrayList;
 public class Dataframe {
 	private ArrayList<Colonne> contenus;
 	
+	/**
+	 * constructeur dataframe vide
+	 */
 	public Dataframe() {
 		this.contenus = new ArrayList<Colonne>();
 	}
 	
-	//constructeur parametre simple
+	/**
+	 * Constructeur a partir d'une seul colone
+	 * @param dataframe
+	 */
 	public Dataframe(ArrayList<Colonne> dataframe) {
 		this.contenus = dataframe;
 	}
 	
-	//constructeur prenant plusieurs colonne en parametre
+	/**
+	 * Constructeur a partir de colonnes
+	 * @param dataframe
+	 */
 	public Dataframe(Colonne...dataframe) {
 		this.contenus = new ArrayList<Colonne>();
 		for(Colonne c : dataframe) {
@@ -27,7 +36,11 @@ public class Dataframe {
 		}
 	}
 	
-	//constructeur depuis fichier csv avec separateur etablis à "," 
+	/**
+	 *  * constructeur à partir d'un fichier csv avec separateur definis a ','
+	 * les labels doivent préalablement etre enlevé du csv, il ne doit y avoir que des valeurs
+	 * @param filepath
+	 */
 	public Dataframe(String filepath) {
 		this.contenus = new ArrayList<Colonne>();
 		String[] tableau_mot;
@@ -59,7 +72,12 @@ public class Dataframe {
 		} 
 	}
 	
-	//constructeur depuis fichier csv avec separateur etablis à "," 
+	/**
+	 * constructeur à partir d'un fichier csv avec separateur donné en argument
+	 * les labels doivent préalablement etre enlevé du csv, il ne doit y avoir que des valeurs
+	 * @param filepath
+	 * @param separateur
+	 */
 	public Dataframe(String filepath, String separateur) {
 			this.contenus = new ArrayList<Colonne>();
 			String[] tableau_mot;
@@ -90,12 +108,18 @@ public class Dataframe {
 			} 
 		}
 	
-	//return nombre de colonne
+	/**
+	 * aille du dataframe en nombre de colonnes
+	 * @return
+	 */
 	public int getSize() {
 		return this.contenus.size();
 	}
 	
-	//ajouter une colonne
+	/**
+	 * ajoute une colonne au dataframe
+	 * @param colonne ajouter
+	 */
 	public void addColonne(Colonne colonne) {
 		this.contenus.add(colonne);
 	}
@@ -108,18 +132,27 @@ public class Dataframe {
 		return res+"]";
 	}
 	
-	//methode d'affichage total
+	/**
+	 * affiche l'integralité du dataframe
+	 */
 	public void Afficher() {
 		System.out.println(this.toString());
 	}
 	
-	//methode d'affichage premiere ligne
+	/**
+	 * Affiche les premiere ligne du dataframe
+	 * @param nombre_de_ligne nombre de ligne a afficher
+	 */
 	public void AfficherPremieresLignes(int nombre_de_ligne) {
 		for(Colonne c : this.contenus) {
 			System.out.println(c.AffichagePremiereLigne(nombre_de_ligne)+"\n");
 		}
 	}
 	
+	/**
+	 * Affiche les derniere ligne du dataframe
+	 * @param nombre_de_ligne nombre de ligne a afficher
+	 */
 	//methode d'affichage derniere ligne
 		public void AfficherDernieresLignes(int nombre_de_ligne) {
 			for(Colonne c : this.contenus) {
