@@ -37,8 +37,8 @@ public class Dataframe {
 	}
 	
 	/**
-	 *  * constructeur à partir d'un fichier csv avec separateur definis a ','
-	 * les labels doivent préalablement etre enlevé du csv, il ne doit y avoir que des valeurs
+	 *  * constructeur a partir d'un fichier csv avec separateur definis a ','
+	 * les labels doivent prealablement etre enleve du csv, il ne doit y avoir que des valeurs
 	 * @param filepath
 	 */
 	public Dataframe(String filepath) {
@@ -50,7 +50,7 @@ public class Dataframe {
 			br = new BufferedReader(new FileReader(filepath));
 			Boolean creerDataframe = true;
 			while ((ligne = br.readLine()) != null){
-				tableau_mot = ligne.split(","); //chaque champs est séparé par une virgule
+				tableau_mot = ligne.split(","); //chaque champs est separe par une virgule
 				if(creerDataframe) {
 					//si permiere ligne on met en place le dataframe (on creer chaque colonne
 					for(int i = 0; i< tableau_mot.length; i++) {
@@ -73,8 +73,8 @@ public class Dataframe {
 	}
 	
 	/**
-	 * constructeur à partir d'un fichier csv avec separateur donné en argument
-	 * les labels doivent préalablement etre enlevé du csv, il ne doit y avoir que des valeurs
+	 * constructeur a partir d'un fichier csv avec separateur donne en argument
+	 * les labels doivent prï¿½alablement etre enleve du csv, il ne doit y avoir que des valeurs
 	 * @param filepath
 	 * @param separateur
 	 */
@@ -87,7 +87,7 @@ public class Dataframe {
 				br = new BufferedReader(new FileReader(filepath));
 				Boolean creerDataframe = true;
 				while ((ligne = br.readLine()) != null){
-					tableau_mot = ligne.split(separateur); //chaque champs est séparé par une virgule
+					tableau_mot = ligne.split(separateur); //chaque champs est separe par une virgule
 					if(creerDataframe) {
 						//si permiere ligne on met en place le dataframe (on creer chaque colonne
 						for(int i = 0; i< tableau_mot.length; i++) {
@@ -133,7 +133,7 @@ public class Dataframe {
 	}
 	
 	/**
-	 * affiche l'integralité du dataframe
+	 * affiche l'integralite du dataframe
 	 */
 	public void Afficher() {
 		System.out.println(this.toString());

@@ -13,4 +13,17 @@
   		<scope>test</scope>
   	</dependency>
   </dependencies>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+                <version>3.0.0-M1</version>
+            </plugin>
+            
+        </plugins>
+    </reporting>
 </project>

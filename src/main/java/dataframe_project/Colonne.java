@@ -43,8 +43,8 @@ public class Colonne<E> {
 	}
 	
 	/**
-	 * ajoute un element à la colonne
-	 * @param element element a ajouté
+	 * ajoute un element a la colonne
+	 * @param element element a ajoute
 	 */
 	public void add(E element) {
 		this.contenu.add(element);
@@ -74,7 +74,7 @@ public class Colonne<E> {
 	/**
 	 * 
 	 * @param nb nombre de ligne a afficher
-	 * @return string value des nb premières lignes
+	 * @return string value des nb premieres lignes
 	 */
 	public String AffichagePremiereLigne(int nombre_de_ligne) {
 		String res = "[label: "+this.label+"data: [";
@@ -99,7 +99,7 @@ public class Colonne<E> {
 	
 	/**
 	 * 
-	 * @return nombre d'lement dans la collone
+	 * @return nombre d'element dans la collone
 	 */
 	public int size() {
 		return this.contenu.size();
