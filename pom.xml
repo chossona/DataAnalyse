@@ -5,4 +5,25 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>dataframe_project_m1</name>
   <description>project devops m1 2021</description>
+  <dependencies>
+  	<dependency>
+  		<groupId>junit</groupId>
+  		<artifactId>junit</artifactId>
+  		<version>4.11</version>
+  		<scope>test</scope>
+  	</dependency>
+  </dependencies>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+                <version>3.0.0-M1</version>
+            </plugin>
+            
+        </plugins>
+    </reporting>
 </project>
