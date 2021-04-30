@@ -37,6 +37,15 @@ public class Dataframe {
 	}
 	
 	/**
+	 * Constructeur a partir d'un sous groupe d'un dataframe existant
+	 * @param dataframe Dataframe a partir duquel construire
+	 * @param indexDebut Index de debut
+	 * @param indexFin Index de fin
+	 */
+	public Dataframe(Dataframe dataframe, int indexDebut, int indexFin) {
+	}
+	
+	/**
 	 *  * constructeur a partir d'un fichier csv avec separateur definis a ','
 	 * les labels doivent prealablement etre enleve du csv, il ne doit y avoir que des valeurs
 	 * @param filepath
