@@ -1,9 +1,11 @@
 package dataframe_project;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Colonne<E> {
-	private ArrayList<E> contenu;
+	private List<E> contenu;
 	private String label = "";
 	
 	/**
@@ -17,7 +19,17 @@ public class Colonne<E> {
 	 * constructeur a partir d'arraylist sans label
 	 * @param contenu arraylist d'element de la colonne
 	 */
-	public Colonne(ArrayList<E> contenu) {
+	public Colonne(List<E> contenu) {
+		this.contenu = contenu;
+	}
+	
+	/**
+	 * Constructeur avec label
+	 * @param contenu Arraylist des valeurs
+	 * @param label nom de la colonne
+	 */
+	public Colonne(String label, List<E> contenu) {
+		this.label = label;
 		this.contenu = contenu;
 	}
 	
@@ -30,16 +42,6 @@ public class Colonne<E> {
 		for(E elem : contenu) {
 			this.contenu.add(elem);
 		}
-	}
-	
-	/**
-	 * Constructeur avec label
-	 * @param contenu Arraylist des valeurs
-	 * @param label nom de la colonne
-	 */
-	public Colonne(ArrayList<E> contenu, String label) {
-		this.contenu = contenu;
-		this.label = label;
 	}
 	
 	/**
@@ -60,14 +62,38 @@ public class Colonne<E> {
 	}
 	
 	/**
+	 * Recupere le label de la colonne
+	 * @return label de la colonne
+	 */
+	public String getLabel() {
+		return this.label;
+	}
+	
+	/**
+	 * Recupere l'élement à un index particulier
+	 * @param index
+	 * @return
+	 */
+	public E getElement(int index) {
+		return this.contenu.get(index);
+	}
+	
+	/**
+	 * Definit l'element a un index particulier
+	 * @param index
+	 * @param element
+	 */
+	public void setElement(int index, E element) {
+		this.contenu.set(index, element);
+	}
+	
+	/**
 	 * 
 	 * @return String value de la colonne
 	 */
 	public String toString() {
-		String res = "[";
-		for(E element : this.contenu) {
-			res+=element.toString()+",";
-		}
+		String res = this.label+"[";
+		res += Colonne.join(",", this.contenu);
 		return res+"]";
 	}
 	
@@ -156,6 +182,26 @@ public class Colonne<E> {
 			
 		}
 	}
+    private static String join(String separator, List<?> input) {
+
+        if (input == null || input.size() <= 0) return "";
+
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < input.size(); i++) {
+
+            sb.append(input.get(i));
+
+            // if not the last item
+            if (i != input.size() - 1) {
+                sb.append(separator);
+            }
+
+        }
+
+        return sb.toString();
+
+    }
 
 }
 
